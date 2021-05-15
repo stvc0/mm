@@ -10,7 +10,7 @@ data <- raw[,2:3]   		 ## Data formatted for histogram
 ############ GET MAP ##############
 ### Get the base file ###
 # Download the shapefile.
-#download.file("http://thematicmapping.org/downloads/TM_WORLD_BORDERS_SIMPL-0.3.zip" , destfile="/world_shape_file.zip")
+# download.file("http://thematicmapping.org/downloads/TM_WORLD_BORDERS_SIMPL-0.3.zip" , destfile="/world_shape_file.zip")
 # You now have it in your current working directory, have a look!
 
 # Unzip this file. You can do it with R (as below), or clicking on the object you downloaded.
@@ -20,7 +20,7 @@ data <- raw[,2:3]   		 ## Data formatted for histogram
 ### Make it R Friendly and Tidy ###
 # Read this shape file with the rgdal library. 
 world_spdf <- readOGR( 
-  dsn="C:/Users/sstavole-carter/Documents/MMs/world", 
+  dsn="../world", 
   layer="TM_WORLD_BORDERS_SIMPL-0.3",
   verbose=FALSE
 )
