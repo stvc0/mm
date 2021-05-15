@@ -3,8 +3,8 @@ library("leaflet")
 library("rgdal")
 library("dplyr")
 
-raw <- read.csv("raw.csv")    ## The raw data
-data <- raw[,2:3]   		 ## Data formatted for histogram
+raw <- read.csv("raw.csv")  ## The raw data
+data <- raw[,2:3]           ## Data formatted for histogram
     colnames(data)[2] <- "Price"
 
 ############ GET MAP ##############
@@ -40,7 +40,7 @@ leaflet() # These three make background map
 addTiles()
 setView()
 
-addPolygons() #give shapes to countries and show population with color
+addPolygons() # Give shapes to countries and show population with color
 
 ############ HISTOGRAM ############
 ### Using hist() ###
