@@ -8,7 +8,7 @@ raw <- read.csv("raw.csv")  ## The raw data
 data <- raw[,2:3]           ## Data formatted for histogram
     colnames(data)[2] <- "Price"
 
-############ MAP ##############
+############ MAP DATA ##############
 # World spacial polygon dataframe
 world_spdf <- readOGR( 
   dsn="../world", 
@@ -20,28 +20,18 @@ world_spdf <- readOGR(
 world_spdf@data$POP2005[ which(world_spdf@data$POP2005 == 0)] = NA
 world_spdf@data$POP2005 <- as.numeric(as.character(world_spdf@data$POP2005)) / 1000000 %>% round(2)
 
-# -- > Now you have a Spdf object (spatial polygon data frame). You can start doing maps!
-
-############ MAP GIG COST DATA TO COUNTRIES ##############
-### Steps to make this happen
-## Merge data and map
-# Add price per gig column (will be world_spdf@data$Price) 
-#to map column where countries match (where data$Country == world_spdf@data$NAME)
-
+# Add price per gig column
 mergedData <- left_join(world_spdf@data, data,
     by = c("NAME" = "Country"))
 
-
 ############ CHOROPLETH ##########
-# Palette
+# Color palette
 pal <- colorNumeric(
     palette = "plasma",
     domain = mergedData$Price,
     na.color = "transparent"
     )     
 pal(c(0,30))
-
-# These will help make background map
 
 map <- leaflet(world_spdf) %>% # Make leaflet obj for map
 addTiles() %>%
