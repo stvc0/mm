@@ -4,8 +4,8 @@ library("rgdal")
 library("dplyr")
 library("viridis")
 
-raw <- read.csv("raw.csv")    ## The raw data
-data <- raw[,2:3]   		 ## Data formatted for histogram
+raw <- read.csv("raw.csv")  ## The raw data
+data <- raw[,2:3]           ## Data formatted for histogram
     colnames(data)[2] <- "Price"
 
 ############ GET MAP ##############
@@ -32,8 +32,6 @@ world_spdf@data$POP2005 <- as.numeric(as.character(world_spdf@data$POP2005)) / 1
 
 # -- > Now you have a Spdf object (spatial polygon data frame). You can start doing maps!
 
-
-
 ############ MAP GIG COST DATA TO COUNTRIES ##############
 ### Steps to make this happen
 ## Merge data and map
@@ -45,10 +43,9 @@ mergedData <- left_join(world_spdf@data, data,
 
 
 ############ CHOROPLETH ##########
-### Create Elements
-
-pal <- colorNumeric(     # Add a palette, domain, and N/A color
-    palette = "plasma", 
+# Palette
+pal <- colorNumeric(
+    palette = "plasma",
     domain = mergedData$Price,
     na.color = "transparent"
     )     
