@@ -50,16 +50,17 @@ mergedData <- left_join(world_spdf@data, data,
 pal <- colorNumeric(     # Add a palette, domain, and N/A color
     palette = "plasma", 
     domain = mergedData$Price,
-    na.color = "transparent")     
-
+    na.color = "transparent"
+    )     
+pal(c(0,30))
 
 # These will help make background map
 
-map <- leaflet(world_spdf) # Make leaflet obj for map
-#addTiles()
-#setView()
+map <- leaflet(world_spdf) %>% # Make leaflet obj for map
+addTiles() %>%
+setView(lat=10, lng=0, zoom=2) %>%
+addPolygons(fillColor = pal, stroke=FALSE) #give shapes to countries and show price with color
 
-#addPolygons() #give shapes to countries and show population with color
 
 ############ HISTOGRAM ############
 ### Using hist() ###
