@@ -47,9 +47,10 @@ mergedData <- left_join(world_spdf@data, data,
 ############ CHOROPLETH ##########
 ### Create Elements
 
-pal <- colorNumeric(     # Add a palette and domain
+pal <- colorNumeric(     # Add a palette, domain, and N/A color
     palette = "plasma", 
-    domain = mergedData$Price)       
+    domain = mergedData$Price,
+    na.color = "transparent")     
 
 
 # These will help make background map
