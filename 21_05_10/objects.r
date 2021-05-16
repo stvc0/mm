@@ -35,10 +35,13 @@ world_spdf@data$POP2005 <- as.numeric(as.character(world_spdf@data$POP2005)) / 1
 ############ CHOROPLETH ##########
 ### Create Elements
 
-pal <- colorNumeric("plasma", 0:30) # Add a palette
-pal() #set palette's parameters
+pal <- colorNumeric(     # Add a palette and domain
+    palette = "plasma", 
+    domain = 0:30)       # NEED TO MAP COST TO COUNTRIES ON MAP OBJ FOR DOMAIN
 
-leaflet() # These three make background map
+
+# These three make background map
+map <- leaflet(world_spdf) # Make leaflet obj for map
 addTiles()
 setView()
 
