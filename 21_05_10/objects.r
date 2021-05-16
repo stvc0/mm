@@ -8,10 +8,8 @@ raw <- read.csv("raw.csv")  ## The raw data
 data <- raw[,2:3]           ## Data formatted for histogram
     colnames(data)[2] <- "Price"
 
-############ GET MAP ##############
-
-### Make it R Friendly and Tidy ###
-# Read this shape file with the rgdal library. 
+############ MAP ##############
+# World spacial polygon dataframe
 world_spdf <- readOGR( 
   dsn="../world", 
   layer="TM_WORLD_BORDERS_SIMPL-0.3",
