@@ -2,6 +2,7 @@ library("ggplot2")
 library("leaflet")
 library("rgdal")
 library("dplyr")
+library("viridis")
 
 raw <- read.csv("raw.csv")    ## The raw data
 data <- raw[,2:3]   		 ## Data formatted for histogram
@@ -34,7 +35,8 @@ world_spdf@data$POP2005 <- as.numeric(as.character(world_spdf@data$POP2005)) / 1
 ############ CHOROPLETH ##########
 ### Create Elements
 
-colorNumeric() # Add a palette
+pal <- colorNumeric("plasma", 0:30) # Add a palette
+pal() #set palette's parameters
 
 leaflet() # These three make background map
 addTiles()
