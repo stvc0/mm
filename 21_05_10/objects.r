@@ -34,13 +34,13 @@ world_spdf@data$POP2005 <- as.numeric(as.character(world_spdf@data$POP2005)) / 1
 ############ CHLOROPLETH ##########
 ### Create Elements
 
-colorNumeric() # Add a palette
+# colorNumeric() # Add a palette
 
-leaflet() # These three make background map
-addTiles()
-setView()
+# leaflet() # These three make background map
+# addTiles()
+# setView()
 
-addPolygons() # Give shapes to countries and show population with color
+# addPolygons() # Give shapes to countries and show population with color
 
 ############ HISTOGRAM ############
 ### Using hist() ###
