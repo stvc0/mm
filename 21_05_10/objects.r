@@ -32,13 +32,16 @@ world_spdf@data$POP2005 <- as.numeric(as.character(world_spdf@data$POP2005)) / 1
 
 # -- > Now you have a Spdf object (spatial polygon data frame). You can start doing maps!
 
-map <- leaflet(world_spdf) # Make leaflet obj for map
+
 
 ############ MAP GIG COST DATA TO COUNTRIES ##############
 ### Steps to make this happen
 ## Merge data and map
-# Add price per gig column to map column where countries match
+# Add price per gig column (will be world_spdf@data$Price) 
+#to map column where countries match (where data$Country == world_spdf@data$NAME)
 
+mergedData <- left_join(world_spdf@data, data,
+    by = c("NAME" = "Country"))
 
 
 ############ CHOROPLETH ##########
@@ -49,12 +52,13 @@ pal <- colorNumeric(     # Add a palette and domain
     domain = 0:30)       # NEED TO MAP COST TO COUNTRIES ON MAP OBJ FOR DOMAIN
 
 
-# These three make background map
+# These will help make background map
 
-addTiles()
-setView()
+map <- leaflet(world_spdf) # Make leaflet obj for map
+#addTiles()
+#setView()
 
-addPolygons() #give shapes to countries and show population with color
+#addPolygons() #give shapes to countries and show population with color
 
 ############ HISTOGRAM ############
 ### Using hist() ###
