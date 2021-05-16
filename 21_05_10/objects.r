@@ -32,6 +32,15 @@ world_spdf@data$POP2005 <- as.numeric(as.character(world_spdf@data$POP2005)) / 1
 
 # -- > Now you have a Spdf object (spatial polygon data frame). You can start doing maps!
 
+map <- leaflet(world_spdf) # Make leaflet obj for map
+
+############ MAP GIG COST DATA TO COUNTRIES ##############
+### Steps to make this happen
+## Merge data and map
+# Add price per gig column to map column where countries match
+
+
+
 ############ CHOROPLETH ##########
 ### Create Elements
 
@@ -41,7 +50,7 @@ pal <- colorNumeric(     # Add a palette and domain
 
 
 # These three make background map
-map <- leaflet(world_spdf) # Make leaflet obj for map
+
 addTiles()
 setView()
 
