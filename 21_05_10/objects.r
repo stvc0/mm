@@ -31,7 +31,7 @@ world_spdf@data$POP2005 <- as.numeric(as.character(world_spdf@data$POP2005)) / 1
 
 # -- > Now you have a Spdf object (spatial polygon data frame). You can start doing maps!
 
-############ CHLOROPLETH ##########
+############ CHOROPLETH ##########
 ### Create Elements
 
 colorNumeric() # Add a palette
