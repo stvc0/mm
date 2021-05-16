@@ -26,9 +26,7 @@ world_spdf <- readOGR(
   verbose=FALSE
 )
 
-# Clean the data object
-world_spdf@data$POP2005[ which(world_spdf@data$POP2005 == 0)] = NA
-world_spdf@data$POP2005 <- as.numeric(as.character(world_spdf@data$POP2005)) / 1000000 %>% round(2)
+
 
 # -- > Now you have a Spdf object (spatial polygon data frame). You can start doing maps!
 
@@ -40,26 +38,32 @@ world_spdf@data$POP2005 <- as.numeric(as.character(world_spdf@data$POP2005)) / 1
 # Add price per gig column (will be world_spdf@data$Price) 
 #to map column where countries match (where data$Country == world_spdf@data$NAME)
 
-mergedData <- left_join(world_spdf@data, data,
-    by = c("NAME" = "Country"))
+world_spdf@data <- left_join(
+    world_spdf@data, data,
+    by = c("NAME" = "Country")
+    )
 
+# Clean the data object
+world_spdf@data$Price[ which(world_spdf@data$Price == 0)] = NA
+world_spdf@data$Price <- as.numeric(as.character(world_spdf@data$Price))
 
 ############ CHOROPLETH ##########
 ### Create Elements
 
-pal <- colorNumeric(     # Add a palette, domain, and N/A color
+pal <- colorNumeric(     
     palette = "plasma", 
-    domain = mergedData$Price,
+    domain = world_spdf@data$Price,
     na.color = "transparent"
     )     
-pal(c(0,30))
+
 
 # These will help make background map
 
 map <- leaflet(world_spdf) %>% # Make leaflet obj for map
 addTiles() %>%
 setView(lat=10, lng=0, zoom=2) %>%
-addPolygons(fillColor = pal, stroke=FALSE) #give shapes to countries and show price with color
+addPolygons(fillColor = ~pal(Price), stroke=FALSE) #Give shapes to countries and show price with color
+
 
 
 ############ HISTOGRAM ############
