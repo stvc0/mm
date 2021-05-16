@@ -33,10 +33,10 @@ pal <- colorNumeric(
     )     
 pal(c(0,30))
 
-map <- leaflet(world_spdf) %>% # Make leaflet obj for map
+map <- leaflet(world_spdf) %>%
 addTiles() %>%
 setView(lat=10, lng=0, zoom=2) %>%
-addPolygons(fillColor = pal, stroke=FALSE) #give shapes to countries and show price with color
+addPolygons(fillColor = pal, stroke=FALSE)
 
 ############ HISTOGRAM ############
 ### Using hist() ###
