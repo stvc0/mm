@@ -11,7 +11,7 @@ data <- raw[,2:3]           ## Data formatted for histogram
 ############ MAP DATA ##############
 # World spacial polygon dataframe
 world_spdf <- readOGR( 
-  dsn="../world", 
+  dsn="../world_spdf", 
   layer="TM_WORLD_BORDERS_SIMPL-0.3",
   verbose=FALSE
 )
