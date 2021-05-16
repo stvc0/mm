@@ -49,7 +49,7 @@ mergedData <- left_join(world_spdf@data, data,
 
 pal <- colorNumeric(     # Add a palette and domain
     palette = "plasma", 
-    domain = 0:30)       # NEED TO MAP COST TO COUNTRIES ON MAP OBJ FOR DOMAIN
+    domain = mergedData$Price)       
 
 
 # These will help make background map
