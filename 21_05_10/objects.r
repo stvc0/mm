@@ -38,7 +38,6 @@ addTiles() %>%
 setView(lat=10, lng=0, zoom=2) %>%
 addPolygons(fillColor = pal, stroke=FALSE) #give shapes to countries and show price with color
 
-
 ############ HISTOGRAM ############
 ### Using hist() ###
 hist <- hist(data[,2],
