@@ -39,23 +39,27 @@ world_spdf@data$Price <- as.numeric(as.character(world_spdf@data$Price))
 ############ CHOROPLETH ##########
 ### Create Elements
 
+scheme <- "viridis"
 # Create palette
 pal <- colorNumeric(     
-    palette = "plasma", 
+    palette = scheme, 
     domain = world_spdf@data$Price,
     na.color = "transparent"
     )     
 
+
 # Add bins
 mybins <- c(0,0.5,1,1.5,5,10,50,Inf)
-mypalette <- colorBin( palette="plasma", domain=world_spdf@data$Price, na.color="transparent", bins=mybins)
+mypalette <- colorBin( palette= scheme, domain=world_spdf@data$Price, na.color="transparent", bins=mybins)
+
 
 # Prepare the text for tooltips:
 mytext <- paste(
     "Country: ", world_spdf@data$NAME,"<br/>", 
-    "Price: ", world_spdf@data$Price, 
+    "Price: ","$", world_spdf@data$Price, 
     sep="") %>%
   lapply(htmltools::HTML)
+
 
 # These will help make background map
 
