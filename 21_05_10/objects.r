@@ -4,15 +4,15 @@ library("rgdal")
 library("dplyr")
 library("viridis")
 
-raw <- read.csv("raw.csv")    ## The raw data
-data <- raw[,2:3]   		 ## Data formatted for histogram
+raw <- read.csv("raw.csv")                ## The raw data
+data <- raw[,2:3]   		                  ## Data formatted for histogram
     colnames(data)[2] <- "Price"
 
 ############ GET MAP ##############
-# Map file is part of repo
+## Map file is part of repo
 
 ### Make it R Friendly and Tidy ###
-# Read this shape file with the rgdal library. 
+## Read this shape file with the rgdal library. 
 world_spdf <- readOGR(                     #Spatial Polygon Data Frame
   dsn="../world", 
   layer="TM_WORLD_BORDERS_SIMPL-0.3",
@@ -22,25 +22,23 @@ world_spdf <- readOGR(                     #Spatial Polygon Data Frame
 
 
 ############ MAP GIG COST DATA TO COUNTRIES ##############
-### Steps to make this happen
-## Merge data and map
-# Add price per gig column (will be world_spdf@data$Price) 
-#to map column where countries match (where data$Country == world_spdf@data$NAME)
-
+## Merge gig price table with map's table
 world_spdf@data <- left_join(
     world_spdf@data, data,
     by = c("NAME" = "Country")
     )
 
-# Clean the data object
+## Clean the data object
 world_spdf@data$Price[ which(world_spdf@data$Price == 0)] = NA
 world_spdf@data$Price <- as.numeric(as.character(world_spdf@data$Price))
 
 ############ CHOROPLETH ##########
 ### Create Elements
 
-scheme <- "viridis"
-# Create palette
+
+## Create palette
+scheme <- "viridis"                 #set palette
+
 pal <- colorNumeric(     
     palette = scheme, 
     domain = world_spdf@data$Price,
@@ -48,12 +46,12 @@ pal <- colorNumeric(
     )     
 
 
-# Add bins
+## Add bins
 mybins <- c(0,0.5,1,1.5,5,10,50,Inf)
 mypalette <- colorBin( palette= scheme, domain=world_spdf@data$Price, na.color="transparent", bins=mybins)
 
 
-# Prepare the text for tooltips:
+## Prepare the text for tooltips:
 mytext <- paste(
     "Country: ", world_spdf@data$NAME,"<br/>", 
     "Price: ","$", world_spdf@data$Price, 
@@ -61,7 +59,7 @@ mytext <- paste(
   lapply(htmltools::HTML)
 
 
-# These will help make background map
+## Make background map
 
 map <- leaflet(world_spdf) %>%         # Make leaflet obj for map
  addTiles() %>%
@@ -86,9 +84,11 @@ map <- leaflet(world_spdf) %>%         # Make leaflet obj for map
 ############ HISTOGRAM ############
 ### Using hist() ###
 hist <- hist(data[,2],
-    main = "Average Price of 1G of Data",    ## Histogram title
-    xlab = "Price")   						 ## X-axis label
+    main = "Average Price of 1G of Data",     # Histogram title
+    xlab = "Price")   						            # X-axis label
 
 ### Using ggplot() ###
 gghist <- ggplot(data,aes(x =  Price))+
-    geom_histogram(binwidth = 1)   		 ## Bin width
+    geom_histogram(binwidth = 1)   		        # Bin width
+
+map
