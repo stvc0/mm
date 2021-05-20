@@ -39,12 +39,16 @@ world_spdf@data$Price <- as.numeric(as.character(world_spdf@data$Price))
 ############ CHOROPLETH ##########
 ### Create Elements
 
+# Create palette
 pal <- colorNumeric(     
     palette = "plasma", 
     domain = world_spdf@data$Price,
     na.color = "transparent"
     )     
 
+# Add bins
+mybins <- c(0,0.5,1,1.5,5,10,50,Inf)
+mypalette <- colorBin( palette="plasma", domain=world_spdf@data$Price, na.color="transparent", bins=mybins)
 
 # Prepare the text for tooltips:
 mytext <- paste(
@@ -71,7 +75,8 @@ map <- leaflet(world_spdf) %>%         # Make leaflet obj for map
       direction = "auto"
     )
   ) %>%
-  addLegend( pal=mypalette, values=~Price, opacity=0.9, title = "Price (USD)", position = "bottomleft" )
+
+  addLegend( pal=pal, values=~Price, opacity=0.9, title = "Price (USD)", position = "bottomleft" )
 
 
 ############ HISTOGRAM ############
