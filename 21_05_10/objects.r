@@ -60,10 +60,22 @@ pal <- colorNumeric(
 # These will help make background map
 
 map <- leaflet(world_spdf) %>% # Make leaflet obj for map
-addTiles() %>%
-setView(lat=10, lng=0, zoom=2) %>%
-addPolygons(fillColor = ~pal(Price), stroke=FALSE) #Give shapes to countries and show price with color
-
+ addTiles() %>%
+ setView(lat=10, lng=0, zoom=2) %>%
+ addPolygons( #Give shapes to countries and show price with color
+    fillColor = ~pal(Price), 
+    stroke=TRUE, 
+    fillOpacity = 0.9, 
+    color="white", 
+    weight=0.3,
+    label = mytext,
+    labelOptions = labelOptions( 
+      style = list("font-weight" = "normal", padding = "3px 8px"), 
+      textsize = "13px", 
+      direction = "auto"
+    )
+  ) %>%
+  addLegend( pal=mypalette, values=~Price, opacity=0.9, title = "Price (USD)", position = "bottomleft" )
 
 
 ############ HISTOGRAM ############
