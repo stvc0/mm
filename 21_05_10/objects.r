@@ -9,26 +9,15 @@ data <- raw[,2:3]   		 ## Data formatted for histogram
     colnames(data)[2] <- "Price"
 
 ############ GET MAP ##############
-### Get the base file ###
-# Download the shapefile.
-# download.file("http://thematicmapping.org/downloads/TM_WORLD_BORDERS_SIMPL-0.3.zip" , destfile="/world_shape_file.zip")
-# You now have it in your current working directory, have a look!
-
-# Unzip this file. You can do it with R (as below), or clicking on the object you downloaded.
-#system("unzip /world_shape_file.zip")
-#  -- > You now have 4 files. One of these files is a .shp file! (TM_WORLD_BORDERS_SIMPL-0.3.shp)
+# Map file is part of repo
 
 ### Make it R Friendly and Tidy ###
 # Read this shape file with the rgdal library. 
-world_spdf <- readOGR( 
+world_spdf <- readOGR(                     #Spatial Polygon Data Frame
   dsn="../world", 
   layer="TM_WORLD_BORDERS_SIMPL-0.3",
   verbose=FALSE
 )
-
-
-
-# -- > Now you have a Spdf object (spatial polygon data frame). You can start doing maps!
 
 
 
@@ -57,12 +46,19 @@ pal <- colorNumeric(
     )     
 
 
+# Prepare the text for tooltips:
+mytext <- paste(
+    "Country: ", world_spdf@data$NAME,"<br/>", 
+    "Price: ", world_spdf@data$Price, 
+    sep="") %>%
+  lapply(htmltools::HTML)
+
 # These will help make background map
 
-map <- leaflet(world_spdf) %>% # Make leaflet obj for map
+map <- leaflet(world_spdf) %>%         # Make leaflet obj for map
  addTiles() %>%
  setView(lat=10, lng=0, zoom=2) %>%
- addPolygons( #Give shapes to countries and show price with color
+ addPolygons(                          # Give shapes to countries and show price with color
     fillColor = ~pal(Price), 
     stroke=TRUE, 
     fillOpacity = 0.9, 
