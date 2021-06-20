@@ -1,0 +1,16 @@
+Group,Percent,Type
+Mammals,49%,Increasing
+Birds,47%,Increasing
+Reptiles,51%,Increasing
+Amphibians,36%,Increasing
+Fish,46%,Increasing
+Mammals,7%,Stable
+Birds,7%,Stable
+Reptiles,6%,Stable
+Amphibians,6%,Stable
+Fish,4%,Stable
+Mammals,44%,Decreasing
+Birds,46%,Decreasing
+Reptiles,43%,Decreasing
+Amphibians,58%,Decreasing
+Fish,50%,Decreasing
