@@ -10,7 +10,7 @@ raw <- read_xlsx("fightData.xlsx")  # The raw data
 data <- raw
 
 graph <- ggplot(data) +
+    geom_point(aes(Male, Animal, color = "blue")) +
+    geom_point(aes(Female, Animal, color = "orange")) +
     theme(axis.title.x = element_blank(), axis.title.y = element_blank()) +
     labs(title = "What animal could you beat in a fight?") +
-    geom_point(aes(Male, Animal, color = "blue")) +
-    geom_point(aes(Female, Animal, color = "orange"))
