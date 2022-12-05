@@ -215,8 +215,89 @@ pre code {
 
 
 <!-- rnb-text-begin -->
-<p>This is an <a href="http://rmarkdown.rstudio.com">R Markdown</a> Notebook. When you execute code within the notebook, the results appear beneath the code.</p>
-<p>Try executing this chunk by clicking the <em>Run</em> button within the chunk or by placing your cursor inside it and pressing <em>Ctrl+Shift+Enter</em>.</p>
+<div id="review---original-visualization" class="section level1">
+<h1>Review - Original Visualization</h1>
+<p>The original visualization is a line chart the trail counts per week by the Rails to Trails Conservancy (RTC). RTC’s original visualization compares the 2019 counts to the 2020 counts, highlighting, as this week’s title tells us, the bicycle boom of 2020 that occurred due to the pandemic.</p>
+<div id="what-works" class="section level2">
+<h2>What Works</h2>
+<p>The line chart is a simple and easy-to-understand visualization of the increase in trail usage between the two years. We think that this is the best choice of visualization for this case.</p>
+</div>
+<div id="what-doesnt-work" class="section level2">
+<h2>What Doesn’t Work</h2>
+<p>There’s nothing that doesn’t work, but there are aspects of this visualization that need to be improved.</p>
+</div>
+<div id="whats-missing" class="section level2">
+<h2>What’s Missing</h2>
+<p>Some of the week numbers are missing. In addition, a sentence or two about what exactly a trail count is would be helpful, as we did not know what a trail count was without additional research.</p>
+</div>
+<div id="what-can-be-improved" class="section level2">
+<h2>What Can Be Improved</h2>
+<ul>
+<li>Y-axis number formatting to improve readability.</li>
+<li>Additional grid lines to improve readability.</li>
+<li>Removal of “Week” in x-axis labels to de-emphasize peripheral information; rotation of the x-axis labels to improve readability.</li>
+<li>Since both years had 31 counters, removal of “(31 counters)” in the legend to de-emphasize peripheral information.</li>
+</ul>
+</div>
+<div id="what-can-take-it-further" class="section level2">
+<h2>What Can Take It Further</h2>
+<ul>
+<li>The addition of key events (e.g. the first day of the first national lockdown) to add key context to the spikes between 2019 and 2020.</li>
+<li>Emphasis, using color, to highlight differences between the two years.</li>
+</ul>
+</div>
+</div>
+<div id="project-outline" class="section level1">
+<h1>Project Outline</h1>
+<ol style="list-style-type: decimal">
+<li>Create the line graph.</li>
+<li>Make axis and legend improvements.</li>
+<li>Write summary copy (Explanation of trail counts and counters.).</li>
+<li>Research key events in 2020.</li>
+<li>Plan out visual improvements of the plot.</li>
+<li>Execute visual improvements, :including
+<ul>
+<li>Addition of key events in 2020; and</li>
+<li>Emphasis of specific data points.</li>
+</ul></li>
+</ol>
+</div>
+<div id="project-work" class="section level1">
+<h1>Project Work</h1>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucm0oZGZbXCJCaWtlcyAoMTQgY291bnRlcnMpXCJdKVxuXG5gYGAifQ== -->
+<pre class="r"><code>rm(df[&quot;Bikes (14 counters)&quot;])
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gcm0oZGZbXCJCaWtlcyAoMTQgY291bnRlcnMpXCJdKSA6IFxuICAuLi4gbXVzdCBjb250YWluIG5hbWVzIG9yIGNoYXJhY3RlciBzdHJpbmdzXG4ifQ== -->
+<pre><code>Error in rm(df[&quot;Bikes (14 counters)&quot;]) : 
+  ... must contain names or character strings</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyMjIyBNYWtlIHRoZSBncmFwaC4gIyMjI1xuZyA8LSBnZ3Bsb3QoZGF0YSA9IHJhdywgbWFwcGluZyA9IGFlcyh4ID0gV2VlaywgeSA9IGBCaWtlcyAoMTQgY291bnRlcnMpYCkpXG5cbnByaW50KGcpXG5gYGAifQ== -->
+<pre class="r"><code>#### Make the graph. ####
+g &lt;- ggplot(data = raw, mapping = aes(x = Week, y = `Bikes (14 counters)`))
+
+print(g)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="submissions-review" class="section level1">
+<h1>Submissions Review</h1>
+<div id="self-review" class="section level2">
+<h2>Self Review</h2>
+</div>
+</div>
+<div id="topics-learned" class="section level1">
+<h1>Topics Learned</h1>
+</div>
+<div id="topics-to-learn" class="section level1">
+<h1>Topics To Learn</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGxvdChjYXJzKVxuYGBgIn0= -->
@@ -228,8 +309,9 @@ pre code {
 <p>When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the <em>Preview</em> button or press <em>Ctrl+Shift+K</em> to preview the HTML file).</p>
 <p>The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike <em>Knit</em>, <em>Preview</em> does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.</p>
 <!-- rnb-text-end -->
+</div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIk1ha2VvdmVyIE1vbmRheSAyMDIxIFdlZWsgMSAtIFRoZSBncmVhdCBiaWN5Y2xlIGJvb20gb2YgMjAyMCINCm91dHB1dDogaHRtbF9ub3RlYm9vaw0KLS0tDQoNClRoaXMgaXMgYW4gW1IgTWFya2Rvd25dKGh0dHA6Ly9ybWFya2Rvd24ucnN0dWRpby5jb20pIE5vdGVib29rLiBXaGVuIHlvdSBleGVjdXRlIGNvZGUgd2l0aGluIHRoZSBub3RlYm9vaywgdGhlIHJlc3VsdHMgYXBwZWFyIGJlbmVhdGggdGhlIGNvZGUuIA0KDQpUcnkgZXhlY3V0aW5nIHRoaXMgY2h1bmsgYnkgY2xpY2tpbmcgdGhlICpSdW4qIGJ1dHRvbiB3aXRoaW4gdGhlIGNodW5rIG9yIGJ5IHBsYWNpbmcgeW91ciBjdXJzb3IgaW5zaWRlIGl0IGFuZCBwcmVzc2luZyAqQ3RybCtTaGlmdCtFbnRlciouIA0KDQpgYGB7cn0NCnBsb3QoY2FycykNCmBgYA0KDQpBZGQgYSBuZXcgY2h1bmsgYnkgY2xpY2tpbmcgdGhlICpJbnNlcnQgQ2h1bmsqIGJ1dHRvbiBvbiB0aGUgdG9vbGJhciBvciBieSBwcmVzc2luZyAqQ3RybCtBbHQrSSouDQoNCldoZW4geW91IHNhdmUgdGhlIG5vdGVib29rLCBhbiBIVE1MIGZpbGUgY29udGFpbmluZyB0aGUgY29kZSBhbmQgb3V0cHV0IHdpbGwgYmUgc2F2ZWQgYWxvbmdzaWRlIGl0IChjbGljayB0aGUgKlByZXZpZXcqIGJ1dHRvbiBvciBwcmVzcyAqQ3RybCtTaGlmdCtLKiB0byBwcmV2aWV3IHRoZSBIVE1MIGZpbGUpLg0KDQpUaGUgcHJldmlldyBzaG93cyB5b3UgYSByZW5kZXJlZCBIVE1MIGNvcHkgb2YgdGhlIGNvbnRlbnRzIG9mIHRoZSBlZGl0b3IuIENvbnNlcXVlbnRseSwgdW5saWtlICpLbml0KiwgKlByZXZpZXcqIGRvZXMgbm90IHJ1biBhbnkgUiBjb2RlIGNodW5rcy4gSW5zdGVhZCwgdGhlIG91dHB1dCBvZiB0aGUgY2h1bmsgd2hlbiBpdCB3YXMgbGFzdCBydW4gaW4gdGhlIGVkaXRvciBpcyBkaXNwbGF5ZWQuDQo=</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIk1ha2VvdmVyIE1vbmRheSAyMDIxIFdlZWsgMSAtIFRoZSBncmVhdCBiaWN5Y2xlIGJvb20gb2YgMjAyMCINCm91dHB1dDogaHRtbF9ub3RlYm9vaw0KLS0tDQojIFJldmlldyAtIE9yaWdpbmFsIFZpc3VhbGl6YXRpb24NClRoZSBvcmlnaW5hbCB2aXN1YWxpemF0aW9uIGlzIGEgbGluZSBjaGFydCB0aGUgdHJhaWwgY291bnRzIHBlciB3ZWVrIGJ5IHRoZSBSYWlscyB0byBUcmFpbHMgQ29uc2VydmFuY3kgKFJUQykuIFJUQydzIG9yaWdpbmFsIHZpc3VhbGl6YXRpb24gY29tcGFyZXMgdGhlIDIwMTkgY291bnRzIHRvIHRoZSAyMDIwIGNvdW50cywgaGlnaGxpZ2h0aW5nLCBhcyB0aGlzIHdlZWsncyB0aXRsZSB0ZWxscyB1cywgdGhlIGJpY3ljbGUgYm9vbSBvZiAyMDIwIHRoYXQgb2NjdXJyZWQgZHVlIHRvIHRoZSBwYW5kZW1pYy4gDQoNCiMjIFdoYXQgV29ya3MNClRoZSBsaW5lIGNoYXJ0IGlzIGEgc2ltcGxlIGFuZCBlYXN5LXRvLXVuZGVyc3RhbmQgdmlzdWFsaXphdGlvbiBvZiB0aGUgaW5jcmVhc2UgaW4gdHJhaWwgdXNhZ2UgYmV0d2VlbiB0aGUgdHdvIHllYXJzLiBXZSB0aGluayB0aGF0IHRoaXMgaXMgdGhlIGJlc3QgY2hvaWNlIG9mIHZpc3VhbGl6YXRpb24gZm9yIHRoaXMgY2FzZS4NCg0KIyMgV2hhdCBEb2Vzbid0IFdvcmsNClRoZXJlJ3Mgbm90aGluZyB0aGF0IGRvZXNuJ3Qgd29yaywgYnV0IHRoZXJlIGFyZSBhc3BlY3RzIG9mIHRoaXMgdmlzdWFsaXphdGlvbiB0aGF0IG5lZWQgdG8gYmUgaW1wcm92ZWQuDQoNCiMjIFdoYXQncyBNaXNzaW5nDQpTb21lIG9mIHRoZSB3ZWVrIG51bWJlcnMgYXJlIG1pc3NpbmcuIEluIGFkZGl0aW9uLCBhIHNlbnRlbmNlIG9yIHR3byBhYm91dCB3aGF0IGV4YWN0bHkgYSB0cmFpbCBjb3VudCBpcyB3b3VsZCBiZSBoZWxwZnVsLCBhcyB3ZSBkaWQgbm90IGtub3cgd2hhdCBhIHRyYWlsIGNvdW50IHdhcyB3aXRob3V0IGFkZGl0aW9uYWwgcmVzZWFyY2guDQoNCiMjIFdoYXQgQ2FuIEJlIEltcHJvdmVkDQoqIFktYXhpcyBudW1iZXIgZm9ybWF0dGluZyB0byBpbXByb3ZlIHJlYWRhYmlsaXR5Lg0KKiBBZGRpdGlvbmFsIGdyaWQgbGluZXMgdG8gaW1wcm92ZSByZWFkYWJpbGl0eS4NCiogUmVtb3ZhbCBvZiAiV2VlayIgaW4geC1heGlzIGxhYmVscyB0byBkZS1lbXBoYXNpemUgcGVyaXBoZXJhbCBpbmZvcm1hdGlvbjsgcm90YXRpb24gb2YgdGhlIHgtYXhpcyBsYWJlbHMgdG8gaW1wcm92ZSByZWFkYWJpbGl0eS4NCiogU2luY2UgYm90aCB5ZWFycyBoYWQgMzEgY291bnRlcnMsIHJlbW92YWwgb2YgIigzMSBjb3VudGVycykiIGluIHRoZSBsZWdlbmQgdG8gZGUtZW1waGFzaXplIHBlcmlwaGVyYWwgaW5mb3JtYXRpb24uDQoNCiMjIFdoYXQgQ2FuIFRha2UgSXQgRnVydGhlcg0KKiBUaGUgYWRkaXRpb24gb2Yga2V5IGV2ZW50cyAoZS5nLiB0aGUgZmlyc3QgZGF5IG9mIHRoZSBmaXJzdCBuYXRpb25hbCBsb2NrZG93bikgdG8gYWRkIGtleSBjb250ZXh0IHRvIHRoZSBzcGlrZXMgYmV0d2VlbiAyMDE5IGFuZCAyMDIwLg0KKiBFbXBoYXNpcywgdXNpbmcgY29sb3IsIHRvIGhpZ2hsaWdodCBkaWZmZXJlbmNlcyBiZXR3ZWVuIHRoZSB0d28geWVhcnMuDQoNCiMgUHJvamVjdCBPdXRsaW5lDQoxLiBDcmVhdGUgdGhlIGxpbmUgZ3JhcGguDQoyLiBNYWtlIGF4aXMgYW5kIGxlZ2VuZCBpbXByb3ZlbWVudHMuDQozLiBXcml0ZSBzdW1tYXJ5IGNvcHkgKEV4cGxhbmF0aW9uIG9mIHRyYWlsIGNvdW50cyBhbmQgY291bnRlcnMuKS4NCjQuIFJlc2VhcmNoIGtleSBldmVudHMgaW4gMjAyMC4NCjUuIFBsYW4gb3V0IHZpc3VhbCBpbXByb3ZlbWVudHMgb2YgdGhlIHBsb3QuDQo2LiBFeGVjdXRlIHZpc3VhbCBpbXByb3ZlbWVudHMsIDppbmNsdWRpbmcNCiAgICAqIEFkZGl0aW9uIG9mIGtleSBldmVudHMgaW4gMjAyMDsgYW5kDQogICAgKiBFbXBoYXNpcyBvZiBzcGVjaWZpYyBkYXRhIHBvaW50cy4NCg0KIyBQcm9qZWN0IFdvcmsNCmBgYHtyIGltcG9ydHN9DQpsaWJyYXJ5KCJyZWFkeGwiKQ0KYGBgDQpgYGB7ciBvcmdhbml6ZX0NCiMjIyMgT3JnYW5pemUgdGhlIGRhdGEuICMjIyMNCnJhdyA8LSByZWFkX3hsc3goIlJhaWxzVG9UcmFpbHNfTmF0aW9uYWwgQ291bnQgRGF0YV93ZWVrLnhsc3giKQ0KDQojIENyZWF0ZSBhIG5ldyBkYXRhIGZyYW1lDQpkaW1zX3JhdyA8LSBkaW0ocmF3KQ0KDQpkZiA8LSByYXdbIkJpa2VzICgxNCBjb3VudGVycykiXQ0KZGZbIkJpa2VzICgxNCBjb3VudGVycykiXSAtPiBkZlsiY291bnRzIl0gIA0Kcm0oZGZbIkJpa2VzICgxNCBjb3VudGVycykiXSkNCiMgQ3JlYXRlIGEgY29sdW1uIGluIGZvcm1hdCB5eS13dy4NCiMjIyBHZXQgdGhlIHdlZWsgbnVtYmVyIGZyb20gcmF3WyJ3ZWVrIl0uDQp3ZWVrX25vcyA8LSBzdWJzdHIocmF3WyJUaW1lZnJhbWUiXSwgNSwgNykNCg0KYGBgDQpgYGB7ciBncmFwaH0NCiMjIyMgTWFrZSB0aGUgZ3JhcGguICMjIyMNCmcgPC0gZ2dwbG90KGRhdGEgPSByYXcsIG1hcHBpbmcgPSBhZXMoeCA9IFdlZWssIHkgPSBgQmlrZXMgKDE0IGNvdW50ZXJzKWApKQ0KDQpwcmludChnKQ0KYGBgDQoNCg0KDQojIFN1Ym1pc3Npb25zIFJldmlldw0KIyMgU2VsZiBSZXZpZXcNCg0KIyBUb3BpY3MgTGVhcm5lZA0KDQojIFRvcGljcyBUbyBMZWFybg0KDQpgYGB7cn0NCnBsb3QoY2FycykNCmBgYA0KDQpBZGQgYSBuZXcgY2h1bmsgYnkgY2xpY2tpbmcgdGhlICpJbnNlcnQgQ2h1bmsqIGJ1dHRvbiBvbiB0aGUgdG9vbGJhciBvciBieSBwcmVzc2luZyAqQ3RybCtBbHQrSSouDQoNCldoZW4geW91IHNhdmUgdGhlIG5vdGVib29rLCBhbiBIVE1MIGZpbGUgY29udGFpbmluZyB0aGUgY29kZSBhbmQgb3V0cHV0IHdpbGwgYmUgc2F2ZWQgYWxvbmdzaWRlIGl0IChjbGljayB0aGUgKlByZXZpZXcqIGJ1dHRvbiBvciBwcmVzcyAqQ3RybCtTaGlmdCtLKiB0byBwcmV2aWV3IHRoZSBIVE1MIGZpbGUpLg0KDQpUaGUgcHJldmlldyBzaG93cyB5b3UgYSByZW5kZXJlZCBIVE1MIGNvcHkgb2YgdGhlIGNvbnRlbnRzIG9mIHRoZSBlZGl0b3IuIENvbnNlcXVlbnRseSwgdW5saWtlICpLbml0KiwgKlByZXZpZXcqIGRvZXMgbm90IHJ1biBhbnkgUiBjb2RlIGNodW5rcy4gSW5zdGVhZCwgdGhlIG91dHB1dCBvZiB0aGUgY2h1bmsgd2hlbiBpdCB3YXMgbGFzdCBydW4gaW4gdGhlIGVkaXRvciBpcyBkaXNwbGF5ZWQuDQo=</div>
 
 
 

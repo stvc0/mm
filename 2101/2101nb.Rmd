@@ -2,10 +2,72 @@
 title: "Makeover Monday 2021 Week 1 - The great bicycle boom of 2020"
 output: html_notebook
 ---
+# Review - Original Visualization
+The original visualization is a line chart the trail counts per week by the Rails to Trails Conservancy (RTC). RTC's original visualization compares the 2019 counts to the 2020 counts, highlighting, as this week's title tells us, the bicycle boom of 2020 that occurred due to the pandemic. 
 
-This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+## What Works
+The line chart is a simple and easy-to-understand visualization of the increase in trail usage between the two years. We think that this is the best choice of visualization for this case.
 
-Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+## What Doesn't Work
+There's nothing that doesn't work, but there are aspects of this visualization that need to be improved.
+
+## What's Missing
+Some of the week numbers are missing. In addition, a sentence or two about what exactly a trail count is would be helpful, as we did not know what a trail count was without additional research.
+
+## What Can Be Improved
+* Y-axis number formatting to improve readability.
+* Additional grid lines to improve readability.
+* Removal of "Week" in x-axis labels to de-emphasize peripheral information; rotation of the x-axis labels to improve readability.
+* Since both years had 31 counters, removal of "(31 counters)" in the legend to de-emphasize peripheral information.
+
+## What Can Take It Further
+* The addition of key events (e.g. the first day of the first national lockdown) to add key context to the spikes between 2019 and 2020.
+* Emphasis, using color, to highlight differences between the two years.
+
+# Project Outline
+1. Create the line graph.
+2. Make axis and legend improvements.
+3. Write summary copy (Explanation of trail counts and counters.).
+4. Research key events in 2020.
+5. Plan out visual improvements of the plot.
+6. Execute visual improvements, :including
+    * Addition of key events in 2020; and
+    * Emphasis of specific data points.
+
+# Project Work
+```{r imports}
+library("readxl")
+```
+```{r organize}
+#### Organize the data. ####
+raw <- read_xlsx("RailsToTrails_National Count Data_week.xlsx")
+
+# Create a new data frame
+dims_raw <- dim(raw)
+
+df <- raw["Bikes (14 counters)"]
+df["Bikes (14 counters)"] -> df["counts"]  
+rm(df["Bikes (14 counters)"])
+# Create a column in format yy-ww.
+### Get the week number from raw["week"].
+week_nos <- substr(raw["Timeframe"], 5, 7)
+
+```
+```{r graph}
+#### Make the graph. ####
+g <- ggplot(data = raw, mapping = aes(x = Week, y = `Bikes (14 counters)`))
+
+print(g)
+```
+
+
+
+# Submissions Review
+## Self Review
+
+# Topics Learned
+
+# Topics To Learn
 
 ```{r}
 plot(cars)
